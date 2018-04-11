@@ -11,8 +11,8 @@ Z = ones(1, xdim*ydim);
 coords = [X;Y];
 
 % Obtain colors for the whole rotatedImage matrix
-rotated = R * (coords - [1;1]) + [1;1];
+rotated = R * coords;
 % using the specified interpolation method
-coords([1,2],[1:10])
-rotated([1,2],[1:10])
+coords
+rotated(1:10)
 end
