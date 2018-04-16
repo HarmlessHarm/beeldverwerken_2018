@@ -19,11 +19,28 @@ function main()
     % to define what kind of border you  want to generate.
     
     %% Question 3
+    
     i = im2double(imread('cameraman.tif'));
-    t = deg2rad(1);
+    t = deg2rad(33);
+    r = rotateImage(i, t, 'linear');
+    rr = rotateImage(r, -t, 'linear');
+    ib = addBorder(i, t);
     
+    % Rem
+    rr(isnan(rr)) = 0;
+    diff = sum(sum(((ib - rr)^2)))
+     
+%      subplot(2,2,1)
+%      imshow(i)
+%      subplot(2,2,2)
+%      imshow(r)
+%      subplot(2,2,3)
+%      imshow(rr)
+%      subplot(2,2,4)
+%      imshow(ib)
+%      
+    size(ib)
+    size(rr)
     
-    calcDistance(i,t,'linear')
-    calcDistance(i,t,'nearest')
     
 end

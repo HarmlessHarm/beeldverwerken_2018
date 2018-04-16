@@ -1,36 +1,39 @@
-function color = border(image, x, y, method, border)
+function color = border(image, M, N, method, border_method)
+    [Mdim, Ndim] = size(image);
     
-    [xdim, ydim] = size(image);
-    
-    switch border
+    switch border_method
         case 'const'
             color = 0;
         case 'nearest'
-            if x < 1
-                x = 1;
+            if M < 1
+                M = 1;
+            elseif M < Mdim
+                M = round(M)
             else
-                x = xdim;
+                M = Mdim;
             end
-            if y < 1
-                y = 1;
+            if N < 1
+                N = 1;
+            elseif N < Ndim
+                N = round(N)
             else
-                y = ydim;
+                N = Ndim;
             end
             
-            color = image(x, y);           
+            color = image(M, N);           
             
         case 'modulo'
-            if x < 1
-                x = mod(x - 1, xdim);
+            if M < 1
+                M = mod(M - 1, Mdim);
             else
-                x = mod(x, xdim) + 1;
+                M = mod(M, Mdim) + 1;
             end
-            if y < 1
-                y = mod(y - 1, ydim);
+            if N < 1
+                N = mod(N - 1, Ndim);
             else
-                y = mod(y, ydim) + 1;
+                N = mod(N, Ndim) + 1;
             end
-            color = pixelValue(image, x, y, method, border);
+            color = pixelValue(image, M, N, method);
     end
     return;
 end
