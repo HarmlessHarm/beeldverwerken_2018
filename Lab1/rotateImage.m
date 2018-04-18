@@ -1,4 +1,4 @@
-function rotatedImage = rotateImage(image, angle, method)
+function rotatedImage = rotateImage(image, angle, method, border)
 
     [Mdim, Ndim] = size(image);
     [newM, newN] = resize_dims(Mdim, Ndim, angle);
@@ -7,7 +7,7 @@ function rotatedImage = rotateImage(image, angle, method)
     
     centerImage = [(Mdim+1)/2;(Ndim+1)/2;1];
     
-    bor_image = addBorder(image, angle);
+    bor_image = addBorder(image, angle, border);
     [borM, borN] = size(bor_image);
     bor_center = [(borM+1)/2;(borN+1)/2;1];
     % Create the necessary rotation matrix

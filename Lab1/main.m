@@ -15,7 +15,7 @@ function main()
     title('Question 2')
     xlabel('200 samples')
     
-    % In pixelValue you can now use 'const', 'edge' and 'modulo'
+    % With the addBorder function you can pass 'const', 'edge' and 'modulo'
     % to define what kind of border you  want to generate.
     
     %% Question 3
