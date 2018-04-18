@@ -17,8 +17,8 @@ function rotatedImage = rotateImage(image, angle, method)
 
 
 
-    M = reshape(repmat((1:newN), newM, 1), 1, newM * newN);
-    N = repmat((1:newM), 1, newM);
+    N = reshape(repmat((1:newN), newM, 1), 1, newM * newN);
+    M = repmat((1:newM), 1, newM);
     Z = ones(1, newM*newN);
 
     coords = [M ; N; Z];

@@ -6,10 +6,10 @@ function gray = linear(image, x, y)
     k = floor(x);
     l = floor(y);
     
-    fkl = impixel(image,k,l);
-    fkl1 = impixel(image,k , l + 1);
-    fk1l1 = impixel(image,k + 1, l + 1);
-    fk1l = impixel(image,k + 1, l);
+    fkl = impixel(image,l,k);
+    fkl1 = impixel(image,l+1,k);
+    fk1l1 = impixel(image,l+1,k + 1);
+    fk1l = impixel(image,l,k + 1);
     
     kl   = (1 - a) .* (1 - b) .* fkl(:,1).';
     kl1  = (1 - a) .* b .* fkl1(:,1).';
