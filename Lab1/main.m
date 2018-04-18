@@ -6,7 +6,7 @@ function main()
     %% Question 2
     a = imread( 'autumn.tif' );
     a = im2double( rgb2gray (a) );
-    
+    figure(1);
     subplot( 2, 3, 1)
     hold on;
     plot( profile (a, 100, 100, 120, 120, 200, 'linear'), 'b');
@@ -58,7 +58,7 @@ function main()
     a = myAffine(i, -53,128, 128,-53, 128,309, 256,256,'linear');
     subplot(2,3,4);
     imshow(a);
-    title('Q5: Rotate with affine');
+    title('Q4: Rotate with affine');
     subplot(2,3,5);
     imshow(i);
     plotParallelogram(-53,128, 128,-53, 128,309);
@@ -66,13 +66,26 @@ function main()
     %% Question 5
     
     i = im2double(imread('attachments/flyers.png'));
-    imshow(i)
-%     xy = ginput(4)
-%     xy = [xy(:,2), xy(:,1)]
-    xy = [187.5130  571.3468;
-          170.5571  818.7026;
-          588.4688  595.2844;
-          555.5545  350.9208];
+%     Predefined images
+    xy = [571,188;822,173;593,587;354,556]; 
+    proj1 = myProjection(i, xy, 400,300, 'linear');
+    xy = [148,590; 102,373; 304,208; 390,395];
+    proj2 = myProjection(i, xy, 300,400, 'linear');
+    figure(1)
+    subplot(2,3,5)
+    imshow(proj1)
+    title('Q5: Projective transformation')
+    subplot(2,3,6)
+    imshow(proj2)
+    title('Q5: Projective transformation')
 
-    myProjection(i, xy, 400, 300, 'nearest');
+%     Uncomment lines below to use user input
+    figure(2);
+    subplot(1,3,[1,2]);
+    imshow(i);
+    xy = ginput(4);
+    projUser = myProjection(i, xy, 400,300, 'linear');
+    subplot(1,3,3);
+    imshow(projUser);
+    
 end
