@@ -7,8 +7,8 @@
 %   points, respectively
 function subPlotFaces(pFaces)
     hold on;
-    for i = 1:size(pFaces, 1)
+    for i = 1:size(pFaces, 3)
         % plot each face
-        plot(pFaces(i,:,1), pFaces(i,:,2), '.-', 'MarkerSize', 15, 'Color', 'b', 'LineWidth', 2)
+        plot(pFaces(1,:,i), pFaces(2,:,i), '.-', 'MarkerSize', 15, 'Color', 'b', 'LineWidth', 2);
     end
     hold off;
