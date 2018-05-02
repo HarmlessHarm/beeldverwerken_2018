@@ -1,4 +1,4 @@
-function h = hough ( im , Thresh , nrho , ntheta )
+function [h, coords] = hough ( im , Thresh , nrho , ntheta )
     % HOUGH
     %
     % Function takes a grey scale image , constructs an edge map by applying
@@ -30,8 +30,7 @@ function h = hough ( im , Thresh , nrho , ntheta )
     accum = zeros(nrho, ntheta);
     edges = edge(im, 'canny', Thresh);
     [row, col] = find(edges);
-    size(row)
-    
+    coords = [row, col, ones(size(row))];
     rhos = col * sin(thetas) - row * cos(thetas);
     for i = 1:size(rhos,1)
         for j = 1:size(rhos,2)
