@@ -6,7 +6,6 @@ function [pts] = points_of_line(points, line, epsilon)
     
     mask = distance < epsilon;
     pts = mask .* points;
-    % delete zero rows
     pts = pts(any(pts,2),:);
     
     return;

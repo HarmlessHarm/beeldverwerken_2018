@@ -10,6 +10,5 @@ function [ x1 , y1 , x2 , y2 ] = thetarho2endpoints(theta, rho, rows, cols )
         x1 = (rho + y1 * cos(theta)) / sin(theta);
         x2 = (rho + y2 * cos(theta)) / sin(theta);
     end
-    [x1,y1,x2,y2]
     return;
 end
