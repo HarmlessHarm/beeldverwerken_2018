@@ -1,5 +1,6 @@
 %% Lab 5
-% Team: Harm Manders, Hannah Min
+% Team: Harm Manders, Hannah Min.
+% Harm is echt heeel lief!
 clc
 clear
 addpath('attachments/');
