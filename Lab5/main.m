@@ -57,7 +57,7 @@ Eigenvals = sum(S(:,1:150)).^2;
 plot(Eigenvals)
 
 %%
-k = 250;
+k = 50;
 
 Scores = U(:,1:k)' * X_train;
 Images = U(:,1:k) * Scores;
@@ -100,28 +100,31 @@ round(img_t / N, 5)
 
 %% Positioning with Nearest Neighbour
 
-pcaTrain = U(:,1:k)' * X_train;
+pcaTrain = U(:,1:k)' * (X_train + X_mean);
 pcaTest = U(:,1:k)' * X_test;
 
-nearestCoordinates = zeros(2,length(pcaTest));
+nearestCoordinates = zeros(2,size(pcaTest,2));
 
-for i = 1:length(pcaTest)
+size(pcaTest)
+size(pcaTrain)
+
+for i = 1:size(pcaTest,2)
     
    dist = sqrt(sum((pcaTrain - pcaTest(:,i)).^2));
    minimum_dist = min(dist);
-   trainInd = find(dist == minimum_dist);
+   trainInd = find(dist == minimum_dist)
    coords = images{trainInd}.position;
+   
    nearestCoordinates(:,i) = coords';
     
 end
-
 figure(7)
 imagestruct = [images{:}];
 positions = vertcat(imagestruct.position)';
 scatter(positions(1,1:train), positions(2,1:train), 'r')
 hold on
-scatter(nearestCoordinates(1,:), nearestCoordinates(2,:), 'b')
-scatter(positions(1,train+1:end), positions(2,train+1:end), 'g')
+scatter(nearestCoordinates(1,23), nearestCoordinates(2,23), 'b')
+scatter(positions(1,train+23), positions(2,train+23), 'g')
 hold off
 
 euclidean = sqrt(sum((nearestCoordinates - positions(:,train+1:end)).^2));
